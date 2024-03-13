@@ -6,11 +6,17 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        Array arr = new Array(10);
-        System.out.print("Original Array: ");
-        arr.printArr();
+        Array arr = new Array(100000000);
+//        System.out.print("Original Array: ");
+//        arr.printArr();
 
-        arr.shellsort();
+        Thread shell = new Thread(new ShellSorter(arr));
+        Thread insert = new Thread(new InsertionSorter(arr));
+
+        shell.start();
+        insert.start();
+//        arr.shellsortHibbard();
+
 
 
 
